@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app.jar
+web: java -javaagent:/app/dd-java-agent.jar -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.logs.injection=true -Ddd.trace.sample.rate=1 -Ddd.service=SpringBootDemo -Ddd.env=dev -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/app.jar
